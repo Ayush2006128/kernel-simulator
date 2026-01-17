@@ -2,6 +2,7 @@ import time
 from collections import deque
 from memory import MemoryManager
 from fs import FileSystem
+from rich import print
 
 
 class Kernel:
@@ -35,7 +36,7 @@ class Kernel:
         print(" [KERNEL] Mounting FileSystem...", end="")
         time.sleep(0.5)
         print(" OK")
-        print("\n--- Welcome to PyOS v1.0 ---\n")
+        print("\n[bold]--- Welcome to PyOS version 1.0 ---[/bold]\n")
 
     def run_process(self, name, duration):
         """

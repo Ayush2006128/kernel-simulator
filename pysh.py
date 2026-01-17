@@ -1,4 +1,6 @@
 from kernel import Kernel
+from rich import print
+from rich.prompt import Prompt
 
 
 class PyShell:
@@ -23,7 +25,9 @@ class PyShell:
 
         while True:
             try:
-                cmd_input = input("user@pyos:~$ ").strip()
+                cmd_input = Prompt.ask(
+                    "[green]monty@pyos[/green][blue]:[/blue]~$"
+                ).strip()
                 if not cmd_input:
                     continue
 
@@ -37,14 +41,14 @@ class PyShell:
                 elif op == "run":
                     # usage: run <app_name> <seconds>
                     if len(cmd) < 3:
-                        print("Usage: run <name> <seconds>")
+                        print("[bold]Usage:[/bold] run <name> <seconds>")
                         continue
                     self.kernel.run_process(cmd[1], cmd[2])
 
                 elif op == "write":
                     # usage: write <filename> <content>
                     if len(cmd) < 3:
-                        print("Usage: write <filename> <content>")
+                        print("[bold]Usage:[/bold] write <filename> <content>")
                         continue
                     # Join the rest of the arguments to form content
                     content = " ".join(cmd[2:])
@@ -53,17 +57,17 @@ class PyShell:
                 elif op == "read":
                     # usage: read <filename>
                     if len(cmd) < 2:
-                        print("Usage: read <filename>")
+                        print("[bold]Usage:[/bold] read <filename>")
                         continue
                     self.kernel.sys_read(cmd[1])
 
                 elif op == "status":
-                    print(f"RAM Usage: {self.kernel.memory.ram}")
-                    print(f"Disk State: {self.kernel.fs.disk}")
+                    print(f"[bold]RAM Usage:[/bold] {self.kernel.memory.ram}")
+                    print(f"[bold]Disk State:[/bold] {self.kernel.fs.disk}")
 
                 else:
-                    print(f"Unknown command: {op}")
+                    print(f"[red]Unknown command: {op}[/red]")
 
             except KeyboardInterrupt:
-                print("\nForce Shutdown.")
+                print("\n[red]Force Shutdown.[/red]")
                 break
