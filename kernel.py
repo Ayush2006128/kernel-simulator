@@ -27,13 +27,13 @@ class Kernel:
         """
         Simulates the boot sequence of the operating system.
         """
-        print(" [BIOS] Checking Hardware...", end="")
+        print(" [blue][BIOS][/blue] Checking Hardware...", end="")
         time.sleep(0.5)
         print(" OK")
-        print(" [KERNEL] Initializing Memory...", end="")
+        print(" [yellow][KERNEL][/yellow] Initializing Memory...", end="")
         time.sleep(0.5)
         print(" OK")
-        print(" [KERNEL] Mounting FileSystem...", end="")
+        print(" [yellow][KERNEL][/yellow] Mounting FileSystem...", end="")
         time.sleep(0.5)
         print(" OK")
         print("\n[bold]--- Welcome to PyOS version 1.0 ---[/bold]\n")
