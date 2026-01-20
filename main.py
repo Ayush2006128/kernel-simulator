@@ -1,4 +1,4 @@
-from pysh import PyShell
+from pyshell.pysh import PyShell
 
 
 def main():

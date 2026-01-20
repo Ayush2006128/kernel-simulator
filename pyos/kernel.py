@@ -1,8 +1,8 @@
 import time
 from collections import deque
-from memory import MemoryManager
-from fs import FileSystem
 from rich import print
+from .fs import FileSystem
+from .memory import MemoryManager
 
 
 class Kernel:

@@ -1,4 +1,4 @@
-from kernel import Kernel
+from pyos.kernel import Kernel
 from rich import print
 from rich.prompt import Prompt
 

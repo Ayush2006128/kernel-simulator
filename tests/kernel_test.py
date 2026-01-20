@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from kernel import Kernel
+from pyos.kernel import Kernel
 
 
 @pytest.fixture
