@@ -1,0 +1,38 @@
+name: check-commit
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          # Enable caching to speed up subsequent runs
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install dependencies
+        # This will install your project and its dependencies into a virtual env
+        run: uv sync --all-extras --dev
+
+      - name: Run Ruff (Linting & Formatting)
+        # We use 'uv run' to execute packages installed in the project environment
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Run Pytest
+        run: uv run pytest
