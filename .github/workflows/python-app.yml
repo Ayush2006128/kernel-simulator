@@ -35,4 +35,4 @@ jobs:
           uv run ruff format --check .
 
       - name: Run Pytest
-        run: uv run pytest
+        run: PYTHONPATH=. uv run pytest
